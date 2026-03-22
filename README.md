@@ -10,16 +10,17 @@ curl -fsSL https://raw.githubusercontent.com/cs01/share-my-claude/main/install.s
 
 ## Usage
 
-By default, share-my-claude uses a free public server so you don't have to set anything up.
+Start a termpair server, then share:
 
 ```
-$ share-my-claude
+termpair serve --port 8000 &
+share-my-claude
 ```
 
 ```
 Connection is ready. Sharing terminal at:
 
-  https://chadsmith.dev/termpair/s/a3f9xK7m#xK7mN2pQ9vR1tY4w8bF3cA
+  http://localhost:8000/s/a3f9xK7m#xK7mN2pQ9vR1tY4w8bF3cA
 
  ╭────────────────────────────────────────────────────────────╮
  │                                                            │
@@ -30,39 +31,30 @@ Connection is ready. Sharing terminal at:
  ╰────────────────────────────────────────────────────────────╯
 ```
 
-Open the link in any browser. That's it.
-
-## Who is this for?
-
-**Use Claude from your phone or tablet.** Start a session on your machine, open the link on your phone, and use Claude from anywhere. Great for when you're away from your desk but want to check on a long-running task or fire off a quick prompt.
-
-**Let others watch your session.** Share the link with a friend or coworker so they can see what Claude is doing in real-time. Use `--read-only` so they can't type.
+Open the link in any browser. `share-my-claude` passes all arguments through to `termpair share`, so you can use any termpair flags:
 
 ```
 share-my-claude --read-only
+share-my-claude --host https://my-server.com --port 443
 ```
 
-**Let others watch *and control* your session.** For the bold — share the link and let someone else type prompts and interact with Claude on your machine. This is the default.
+### Public server
+
+Don't want to run your own server? Use the free public one:
 
 ```
-share-my-claude
+share-my-claude --host https://chadsmith.dev/termpair --port 0
 ```
 
-## Self-hosting
+The server is a blind relay — all data is end-to-end encrypted and the server never sees your data.
 
-Don't want to use the public server? Run your own:
+## Who is this for?
 
-```
-termpair serve --port 8000
-```
+**Use Claude from your phone or tablet.** Start a session on your machine, open the link on your phone, and use Claude from anywhere.
 
-Then point share-my-claude at it:
+**Let others watch your session.** Share the link so others can see what Claude is doing in real-time. Use `--read-only` so they can't type.
 
-```
-share-my-claude --host http://your-server.com --port 8000
-```
-
-The server is a blind relay — it routes encrypted messages but never decrypts them. Still, if you want full control, self-hosting is easy. See [termpair](https://github.com/cs01/termpair) for details.
+**Let others control your session.** Share the link and let someone else interact with Claude on your machine. This is the default.
 
 ## Security
 

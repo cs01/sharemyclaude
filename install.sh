@@ -70,60 +70,7 @@ main() {
 
   cat > "$tmp/share-my-claude" << 'SCRIPT'
 #!/bin/sh
-set -eu
-
-HOST="${HOST:-https://chadsmith.dev/termpair}"
-PORT="${PORT:-0}"
-CMD="${CMD:-claude}"
-READ_ONLY=""
-LOCAL=""
-
-usage() {
-  echo "Usage: share-my-claude [options]"
-  echo ""
-  echo "Share your Claude Code session with anyone via a link."
-  echo ""
-  echo "Options:"
-  echo "  --host URL     server url (default: https://chadsmith.dev/termpair)"
-  echo "  --port PORT    server port (default: none, uses host url)"
-  echo "  --cmd CMD      command to run (default: claude)"
-  echo "  --read-only    prevent viewers from typing"
-  echo "  --local        run a local server instead of using the public one"
-  echo "  -h, --help     show this help"
-}
-
-while [ $# -gt 0 ]; do
-  case "$1" in
-    --host) HOST="$2"; shift 2 ;;
-    --port) PORT="$2"; shift 2 ;;
-    --cmd) CMD="$2"; shift 2 ;;
-    --read-only) READ_ONLY="--read-only"; shift ;;
-    --local) LOCAL="1"; HOST="http://localhost"; PORT="8000"; shift ;;
-    -h|--help) usage; exit 0 ;;
-    *) echo "Unknown option: $1" >&2; usage >&2; exit 1 ;;
-  esac
-done
-
-if ! command -v termpair >/dev/null 2>&1; then
-  echo "error: termpair not found. Install it first:" >&2
-  echo "  curl -fsSL https://raw.githubusercontent.com/cs01/share-my-claude/main/install.sh | sh" >&2
-  exit 1
-fi
-
-cleanup() {
-  if [ -n "${SERVER_PID:-}" ]; then
-    kill "$SERVER_PID" 2>/dev/null || true
-  fi
-}
-trap cleanup EXIT INT TERM
-
-if [ -n "$LOCAL" ]; then
-  termpair serve --port "$PORT" &
-  SERVER_PID=$!
-  sleep 1
-fi
-
-termpair share --cmd "$CMD" --host "$HOST" --port "$PORT" --open-browser $READ_ONLY
+exec termpair share --cmd claude "$@"
 SCRIPT
 
   if [ -w "$INSTALL_DIR" ]; then
