@@ -1,6 +1,6 @@
 # share-my-claude
 
-Share your Claude Code terminal session with anyone via a link.
+Share your Claude Code session with a browser.
 
 ## Install
 
@@ -28,14 +28,27 @@ Connection is ready. Sharing terminal at:
  ╰────────────────────────────────────────────────────────────╯
 ```
 
-Send the link to anyone. They can watch (or control) your Claude session from their browser. Fully end-to-end encrypted — the server never sees your data.
+Open the link in any browser. That's it.
 
-### Options
+## Who is this for?
+
+**Use Claude from your phone or tablet.** Start a session on your machine, open the link on your phone, and use Claude from anywhere. Great for when you're away from your desk but want to check on a long-running task or fire off a quick prompt.
+
+**Let others watch your session.** Share the link with a friend or coworker so they can see what Claude is doing in real-time. Use `--read-only` so they can't type.
 
 ```
-share-my-claude --read-only    # viewers can only watch
-share-my-claude --port 9000    # different port
+share-my-claude --read-only
 ```
+
+**Let others watch *and control* your session.** For the bold — share the link and let someone else type prompts and interact with Claude on your machine. This is the default.
+
+```
+share-my-claude
+```
+
+## Security
+
+All data is end-to-end encrypted (AES-128-GCM). The server is a blind relay and never sees your data. The encryption key is in the URL fragment, which is never sent to the server.
 
 ## Want to share other terminal apps?
 
