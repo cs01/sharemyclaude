@@ -1,14 +1,14 @@
 # sharemyclaude
 
-Share your Claude Code session with a browser.
+Share your Claude Code session over the web. Public or private, one command.
 
-## Who is this for?
+**Access Claude from your phone** — start a session on your machine, open the link on any device, and control Claude from anywhere.
 
-**Use Claude from your phone or tablet.** Start a session on your machine, open the link on your phone, and use Claude from anywhere.
+**Share publicly** — broadcast your session unencrypted on the sharemyclau.de landing page for anyone to watch.
 
-**Let others watch your session.** Share the link so others can see what Claude is doing in real-time. Use `--read-only` so they can't type.
+**Share privately** — end-to-end encrypted by default. Only people with the link can view your session.
 
-**Let others control your session.** Share the link and let someone else interact with Claude on your machine. This is the default.
+**Watch others** — browse public sessions on sharemyclau.de and watch Claude work in real-time.
 
 ## Install
 
@@ -55,9 +55,9 @@ Private sessions are end-to-end encrypted (AES-128-GCM). The server is a blind r
 
 Public sessions (`--public`) are **not encrypted** — they are listed on the landing page and viewable by anyone. Use private mode (the default) when sharing sensitive work.
 
-## Want to share other terminal apps?
+## Built on termpair
 
-sharemyclaude is built on [termpair](https://github.com/cs01/termpair), which can share any terminal app (vim, htop, your shell, etc).
+sharemyclaude is a wrapper around [termpair](https://github.com/cs01/termpair), which provides end-to-end encrypted terminal sharing for any terminal app — vim, htop, your shell, or anything else. If you want to self-host or share non-Claude sessions, check out termpair directly.
 
 ---
 
