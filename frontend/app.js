@@ -619,6 +619,58 @@ function init() {
     connect(tid, key || null);
   });
 
+  document.querySelectorAll("#landing pre").forEach((pre) => {
+    const btn = document.createElement("button");
+    btn.className = "copy-btn";
+    btn.textContent = "Copy";
+    btn.addEventListener("click", () => {
+      const code = pre.querySelector("code");
+      navigator.clipboard.writeText(code ? code.textContent : pre.textContent);
+      btn.textContent = "Copied!";
+      setTimeout(() => { btn.textContent = "Copy"; }, 1500);
+    });
+    pre.appendChild(btn);
+  });
+
+  $id("copy-md-btn").addEventListener("click", () => {
+    const md = [
+      "# sharemyclaude",
+      "",
+      "Share your Claude Code session live in the browser at https://sharemyclau.de",
+      "",
+      "## Install",
+      "",
+      "```",
+      "curl -fsSL https://raw.githubusercontent.com/cs01/sharemyclaude/main/install.sh | sh",
+      "```",
+      "",
+      "## Share",
+      "",
+      "Public (listed on sharemyclau.de, read-only, no encryption):",
+      "```",
+      "sharemyclaude --public",
+      "```",
+      "",
+      "Private (end-to-end encrypted):",
+      "```",
+      "sharemyclaude",
+      "```",
+      "",
+      "Pass args to Claude after `--`:",
+      "```",
+      "sharemyclaude --public -- --dangerously-skip-permissions",
+      "```",
+      "",
+      "- Website: https://sharemyclau.de",
+      "- GitHub: https://github.com/cs01/sharemyclaude",
+      "- Powered by: https://github.com/cs01/termpair",
+    ].join("\n");
+    navigator.clipboard.writeText(md);
+    const btn = $id("copy-md-btn");
+    btn.textContent = "Copied!";
+    setTimeout(() => { btn.textContent = "Copy as Markdown"; }, 1500);
+  });
+
   startSessionPolling();
 }
 

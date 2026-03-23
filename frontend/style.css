@@ -132,7 +132,39 @@ pre {
   font-size: 0.875rem;
   margin-bottom: 1rem;
   color: var(--text);
+  position: relative;
 }
+
+pre .copy-btn {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  background: var(--border);
+  border: none;
+  border-radius: 3px;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  padding: 0.2rem 0.4rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+pre:hover .copy-btn { opacity: 1; }
+pre .copy-btn:hover { color: var(--text); background: var(--accent); }
+
+.copy-md-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.copy-md-btn:hover { color: var(--text); border-color: var(--accent); }
 
 code { font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace; }
 p code { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 0.15rem 0.35rem; font-size: 0.85em; }
