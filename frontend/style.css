@@ -287,16 +287,34 @@ button[type="submit"]:focus-visible { outline: 2px solid var(--focus); outline-o
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem;
-  font-size: 0.9rem;
+  gap: 1.5rem;
+  padding: 2rem 1.5rem;
+  font-size: 1rem;
   color: var(--text-muted);
   background: var(--footer-bg);
+  flex-wrap: wrap;
+}
+
+.footer-link-main {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--accent);
+  transition: color 0.15s;
+}
+
+.footer-link-main:hover {
+  color: var(--accent-hover);
+  text-decoration: none;
+}
+
+.footer-divider {
+  color: var(--border);
 }
 
 .powered-by {
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
 }
 
 #toast-container {
