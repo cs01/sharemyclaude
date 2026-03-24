@@ -1,4 +1,4 @@
-# sharemyclaude
+# Share My Claude
 
 Share your Claude Code session over the web. Public or private, one command.
 
@@ -31,7 +31,7 @@ This installs `termpair` (the server/client) and `sharemyclaude` (a wrapper that
 sharemyclaude
 ```
 
-That's it. It connects to the public server at sharemyclau.de, launches Claude Code, and gives you a link to share.
+That's it. After pressing Enter, Claude Code launches normally -- you use it exactly as you always do. The only difference is that your terminal session is mirrored live to a shareable link that anyone with the URL can watch (or type in) from their browser.
 
 **Public session** (listed on the landing page, anyone can find it):
 
